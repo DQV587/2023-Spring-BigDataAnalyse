@@ -130,7 +130,7 @@ public class User
 
     @Override
     public void write(DataOutput dataOutput) throws IOException {
-        review_date.write(dataOutput);
+        review_id.write(dataOutput);
         longitude.write(dataOutput);
         latitude.write(dataOutput);
         altitude.write(dataOutput);
@@ -145,7 +145,7 @@ public class User
     }
     @Override
     public void readFields(DataInput dataInput) throws IOException {
-        review_date.readFields(dataInput);
+        review_id.readFields(dataInput);
         longitude.readFields(dataInput);
         latitude.readFields(dataInput);
         altitude.readFields(dataInput);
