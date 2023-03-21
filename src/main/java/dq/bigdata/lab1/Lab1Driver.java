@@ -4,6 +4,8 @@ import dq.bigdata.lab1.entity.User;
 import dq.bigdata.lab1.phase1.SampleMapper;
 import dq.bigdata.lab1.phase1.SamplePartitioner;
 import dq.bigdata.lab1.phase1.SampleReducer;
+import dq.bigdata.lab1.phase2.FilterMapper;
+import dq.bigdata.lab1.phase2.FilterReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -11,6 +13,7 @@ import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.jobcontrol.ControlledJob;
+import org.apache.hadoop.mapreduce.lib.jobcontrol.JobControl;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.util.GenericOptionsParser;
@@ -27,7 +30,7 @@ public class Lab1Driver extends Configured implements Tool {
         Configuration conf1=new Configuration();
 
         String[] otherArgs = (new GenericOptionsParser(conf1, strings)).getRemainingArgs();
-        if (otherArgs.length != 1) {
+        if (otherArgs.length != 5) {
             System.err.println("Usage: Lab1 <in>: input path");
             System.exit(2);
         }
@@ -47,13 +50,61 @@ public class Lab1Driver extends Configured implements Tool {
         job1.setOutputKeyClass(Text.class);
         job1.setOutputKeyClass(NullWritable.class);
 
-        String phase1OutputFilePath="/lab1/D_Sample";
-        FileInputFormat.addInputPath(job1,new Path(otherArgs[0]));
+        String inputFilePath=otherArgs[0];
+        String phase1OutputFilePath=otherArgs[1];
+
+        FileInputFormat.addInputPath(job1,new Path(inputFilePath));
         FileOutputFormat.setOutputPath(job1,new Path(phase1OutputFilePath));
 
-        //ControlledJob controlledJob1=new ControlledJob(job1.getConfiguration());
+        ControlledJob controlledJob1=new ControlledJob(job1.getConfiguration());
 
-        return job1.waitForCompletion(true) ? 0 : 1;
+        Configuration conf2=new Configuration();
+        conf2.setDouble("LongitudeMax",11.1993265);
+        conf2.setDouble("LongitudeMin",8.1461259);
+        conf2.setDouble("LatitudeMax",57.750511);
+        conf2.setDouble("LatitudeMin",56.5824856);
+
+        Job job2=Job.getInstance(conf2,"Phase_2");
+        job2.setJarByClass(Lab1Driver.class);
+
+        job2.setMapperClass(FilterMapper.class);
+        job2.setReducerClass(FilterReducer.class);
+        job2.setOutputKeyClass(User.class);
+        job2.setOutputValueClass(NullWritable.class);
+        job2.setNumReduceTasks(8);
+
+        String phase2OutputFilePath=otherArgs[2];
+        FileInputFormat.addInputPath(job2,new Path(phase1OutputFilePath));
+        FileOutputFormat.setOutputPath(job2,new Path(phase2OutputFilePath));
+
+        ControlledJob controlledJob2=new ControlledJob(job2.getConfiguration());
+        controlledJob2.addDependingJob(controlledJob1);
+
+
+
+        String phase3OutputFilePath=otherArgs[3];
+
+
+        JobControl jc=new JobControl("lab1");
+        jc.addJob(controlledJob1);
+        jc.addJob(controlledJob2);
+
+        Thread jcThread = new Thread(jc);
+        jcThread.start();
+        while(true){
+            //当job池里所有的job完成后,执行 下一步操作
+            if(jc.allFinished()){
+                System.out.println(jc.getSuccessfulJobList());
+                jc.stop();
+                return 0;
+            }
+            //获取执行失败的job列表
+            if(jc.getFailedJobList().size() > 0) {
+                System.out.println(jc.getFailedJobList());
+                jc.stop();
+                return 1;
+            }
+        }
     }
     public static void main(String[] args) throws Exception {
         // Make sure there are exactly 2 parameters
