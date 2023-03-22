@@ -9,16 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de8849e3-f668-44ff-95b1-60b7969c63b2" name="Changes" comment="phase2 completed(truly)">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase3_pre/FindMaxMinMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase3_pre/FindMaxMinReducer.java" afterDir="false" />
+    <list default="true" id="de8849e3-f668-44ff-95b1-60b7969c63b2" name="Changes" comment="phase3 completed(truly)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/Lab1Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/Lab1Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/entity/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase1/SampleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase1/SampleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase1/SamplePartitioner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/utils/CareerPartitioner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase3/StandardizeMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase3/StandardizeMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase3/StandardizeReducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase3/StandardizeReducer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterReducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterReducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +91,8 @@
       <workItem from="1679493399841" duration="238000" />
       <workItem from="1679494159597" duration="145000" />
       <workItem from="1679494590035" duration="402000" />
+      <workItem from="1679495359511" duration="1588000" />
+      <workItem from="1679498997128" duration="607000" />
     </task>
     <task id="LOCAL-00001" summary="phase1 completed">
       <created>1679324301487</created>
@@ -118,7 +115,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679389555549</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="phase3 completed(truly)">
+      <created>1679495444241</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1679495444241</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,6 +136,16 @@
             <State />
           </value>
         </entry>
+        <entry key="dc3398d6-be02-4fb0-aff3-f4a471350e53">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="dc3398d6-be02-4fb0-aff3-f4a471350e53" value="TOOL_WINDOW" />
       </map>
     </option>
   </component>
@@ -139,6 +153,7 @@
     <MESSAGE value="phase1 completed" />
     <MESSAGE value="phase1 completed(truly)" />
     <MESSAGE value="phase2 completed(truly)" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase2 completed(truly)" />
+    <MESSAGE value="phase3 completed(truly)" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase3 completed(truly)" />
   </component>
 </project>

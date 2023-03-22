@@ -73,10 +73,13 @@ public class Lab1Driver extends Configured implements Tool {
         job2.setJarByClass(Lab1Driver.class);
 
         job2.setMapperClass(FilterMapper.class);
+        job2.setMapOutputKeyClass(Text.class);
+        job2.setMapOutputValueClass(User.class);
         job2.setReducerClass(FilterReducer.class);
         job2.setOutputKeyClass(User.class);
         job2.setOutputValueClass(NullWritable.class);
         job2.setNumReduceTasks(8);
+        job2.setPartitionerClass(CareerPartitioner.class);
 
         String phase2OutputFilePath=otherArgs[2];
         FileInputFormat.addInputPath(job2,new Path(phase1OutputFilePath));

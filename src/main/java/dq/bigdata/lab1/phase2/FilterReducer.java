@@ -7,9 +7,12 @@ import org.apache.hadoop.mapreduce.Reducer;
 import java.io.IOException;
 
 public class FilterReducer
-        extends Reducer<User, NullWritable, User, NullWritable>{
+        extends Reducer<Text, User, User,NullWritable>{
     @Override
-    protected void reduce(User key,Iterable<NullWritable> values,Context context) throws IOException, InterruptedException {
-        context.write(key,NullWritable.get());
+    protected void reduce(Text key,Iterable<User> values,Context context) throws IOException, InterruptedException {
+        for(User user:values){
+            context.write(user,NullWritable.get());
+        }
+
     }
 }

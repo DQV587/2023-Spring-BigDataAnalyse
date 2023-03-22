@@ -11,7 +11,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 import java.io.IOException;
 
 public class FilterMapper
-        extends Mapper<LongWritable, Text, User, NullWritable> {
+        extends Mapper<LongWritable, Text, Text, User> {
     private final User user=new User();
     double longitudeMax;
     double longitudeMin;
@@ -57,7 +57,7 @@ public class FilterMapper
             user.setUser_nationality(nationality);
             user.setUser_career(career);
             user.setUser_income(income);
-            context.write(user,NullWritable.get());
+            context.write(new Text(career),user);
         }
     }
 }
