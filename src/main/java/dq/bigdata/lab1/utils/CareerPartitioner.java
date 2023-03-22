@@ -1,12 +1,11 @@
-package dq.bigdata.lab1.phase1;
+package dq.bigdata.lab1.utils;
 
 
 import dq.bigdata.lab1.entity.User;
-import dq.bigdata.lab1.entity.UserCareer;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;
 
-public class SamplePartitioner extends Partitioner<Text, User> {
+public class CareerPartitioner extends Partitioner<Text, User> {
 
     @Override
     public int getPartition(Text text, User user, int i) {

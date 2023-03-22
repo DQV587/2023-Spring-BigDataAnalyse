@@ -90,6 +90,4 @@ public class SampleMapper
         user.setUser_income(income);
         context.write(new Text(career),user);
     }
-
-
 }

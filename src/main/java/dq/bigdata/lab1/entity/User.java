@@ -175,8 +175,8 @@ public class User
     }
     @Override
     public int compareTo(User user) {
-        int flag=longitude.compareTo(user.getLongitude());
-        if(flag==0) return latitude.compareTo(user.getLatitude());
+        int flag=rating.compareTo(user.getRating());
+        if(flag==0) return longitude.compareTo(user.getLongitude());
         else return flag;
     }
 }
