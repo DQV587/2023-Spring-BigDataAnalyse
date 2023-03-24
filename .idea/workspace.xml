@@ -9,11 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="de8849e3-f668-44ff-95b1-60b7969c63b2" name="Changes" comment="phase3 completed(truly)">
+    <list default="true" id="de8849e3-f668-44ff-95b1-60b7969c63b2" name="Changes" comment="phase3 completed(truly+)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/entity/Nationality.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase4/FillMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase4/FillReducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase4_pre/AvgMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase4_pre/AvgReducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase4_pre/RegressionMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase4_pre/RegressionReducer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/Lab1Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/Lab1Driver.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterReducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dq/bigdata/lab1/phase2/FilterReducer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="package-info" />
+        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
       </list>
@@ -92,7 +98,15 @@
       <workItem from="1679494159597" duration="145000" />
       <workItem from="1679494590035" duration="402000" />
       <workItem from="1679495359511" duration="1588000" />
-      <workItem from="1679498997128" duration="607000" />
+      <workItem from="1679498997128" duration="1409000" />
+      <workItem from="1679560036889" duration="5183000" />
+      <workItem from="1679566512563" duration="133000" />
+      <workItem from="1679567022735" duration="223000" />
+      <workItem from="1679576621548" duration="73000" />
+      <workItem from="1679577198727" duration="381000" />
+      <workItem from="1679577953905" duration="7878000" />
+      <workItem from="1679587117963" duration="422000" />
+      <workItem from="1679588057991" duration="41000" />
     </task>
     <task id="LOCAL-00001" summary="phase1 completed">
       <created>1679324301487</created>
@@ -122,7 +136,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679495444241</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="phase3 completed(truly+)">
+      <created>1679499670349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679499670349</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -154,6 +175,7 @@
     <MESSAGE value="phase1 completed(truly)" />
     <MESSAGE value="phase2 completed(truly)" />
     <MESSAGE value="phase3 completed(truly)" />
-    <option name="LAST_COMMIT_MESSAGE" value="phase3 completed(truly)" />
+    <MESSAGE value="phase3 completed(truly+)" />
+    <option name="LAST_COMMIT_MESSAGE" value="phase3 completed(truly+)" />
   </component>
 </project>

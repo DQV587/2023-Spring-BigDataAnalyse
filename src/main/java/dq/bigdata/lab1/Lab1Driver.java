@@ -4,8 +4,10 @@ import dq.bigdata.lab1.entity.User;
 import dq.bigdata.lab1.phase1.SampleMapper;
 import dq.bigdata.lab1.phase3.StandardizeMapper;
 import dq.bigdata.lab1.phase3.StandardizeReducer;
-import dq.bigdata.lab1.phase3_pre.FindMaxMinMapper;
-import dq.bigdata.lab1.phase3_pre.FindMaxMinReducer;
+import dq.bigdata.lab1.phase4.FillMapper;
+import dq.bigdata.lab1.phase4.FillReducer;
+import dq.bigdata.lab1.phase4_pre.AvgMapper;
+import dq.bigdata.lab1.phase4_pre.AvgReducer;
 import dq.bigdata.lab1.utils.CareerPartitioner;
 import dq.bigdata.lab1.phase1.SampleReducer;
 import dq.bigdata.lab1.phase2.FilterMapper;
@@ -13,6 +15,7 @@ import dq.bigdata.lab1.phase2.FilterReducer;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -127,12 +130,45 @@ public class Lab1Driver extends Configured implements Tool {
         ControlledJob controlledJob3=new ControlledJob(job3.getConfiguration());
         controlledJob3.addDependingJob(controlledJob2);
 
+//        Configuration conf4_pre1=new Configuration();
+//        Job job4_pre1=Job.getInstance(conf4_pre1,"Phase4_Pre");
+//        job4_pre1.setJarByClass(Lab1Driver.class);
+//        job4_pre1.setMapperClass(AvgMapper.class);
+//        job4_pre1.setReducerClass(AvgReducer.class);
+//        job4_pre1.setOutputKeyClass(Text.class);
+//        job4_pre1.setOutputValueClass(DoubleWritable.class);
+//        FileInputFormat.addInputPath(job4_pre1,new Path(phase3OutputFilePath));
+//        FileOutputFormat.setOutputPath(job4_pre1,new Path("/lab1/phase4/avgRating"));
+//
+//        ControlledJob controlledJob4Pre=new ControlledJob(job4_pre1.getConfiguration());
+//        controlledJob4Pre.addDependingJob(controlledJob3);
+
+        Configuration conf4=new Configuration();
+        Job job4=Job.getInstance(conf4,"Phase4");
+        job4.setJarByClass(Lab1Driver.class);
+        job4.setMapperClass(FillMapper.class);
+        job4.setReducerClass(FillReducer.class);
+        job4.setMapOutputKeyClass(Text.class);
+        job4.setMapOutputValueClass(User.class);
+        job4.setOutputKeyClass(User.class);
+        job4.setOutputValueClass(NullWritable.class);
+        job4.setPartitionerClass(CareerPartitioner.class);
+        job4.setNumReduceTasks(8);
+
+        String phase4OutPutFilePath=otherArgs[4];
+        FileInputFormat.addInputPath(job4,new Path(phase3OutputFilePath));
+        FileOutputFormat.setOutputPath(job4,new Path(phase4OutPutFilePath));
+
+        ControlledJob controlledJob4=new ControlledJob(job4.getConfiguration());
+        controlledJob4.addDependingJob(controlledJob3);
+
         JobControl jc=new JobControl("lab1");
         jc.addJob(controlledJob1);
         jc.addJob(controlledJob2);
 //        jc.addJob(controlledJob3_pre);
         jc.addJob(controlledJob3);
-
+//        jc.addJob(controlledJob4Pre);
+        jc.addJob(controlledJob4);
         Thread jcThread = new Thread(jc);
         jcThread.start();
         while(true){
@@ -151,17 +187,11 @@ public class Lab1Driver extends Configured implements Tool {
         }
     }
     public static void main(String[] args) throws Exception {
-        // Make sure there are exactly 2 parameters
         System.out.println(Arrays.toString(args));
         int returnStatus = submitJob(args);
-        //theLogger.info("returnStatus="+returnStatus);
-
         System.exit(returnStatus);
     }
     public static int submitJob(String[] args) throws Exception {
-        //String[] args = new String[2];
-        //args[0] = inputDir;
-        //args[1] = outputDir;
         int returnStatus = ToolRunner.run(new Lab1Driver(), args);
         return returnStatus;
     }
